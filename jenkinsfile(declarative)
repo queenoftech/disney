@@ -7,7 +7,7 @@ pipeline{
     stage('1GetCode'){
       steps{
         sh "echo 'cloning the latest application version' "
-        git credentialsId: 'git-credentials', url: 'https://github.com/queenoftech/paypal'
+        git credentialsId: 'git-credentials', url: 'https://github.com/queenoftech/disney'
       }
     }
     stage('3Test+Build'){
@@ -30,7 +30,7 @@ pipeline{
     }
     stage('8deploy2prod'){
       steps{
-        deploy adapters: [tomcat9(credentialsId: 'TOMCAT', path: '', url: 'http://3.80.51.183:8080')], contextPath: null, war: 'target/*'
+        deploy adapters: [tomcat9(credentialsId: 'TOMCAT', path: '', url: 'http://54.221.102.193:8080')], contextPath: null, war: 'target/*war'
     }     
   }
 }
